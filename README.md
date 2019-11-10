@@ -11,6 +11,5 @@ This repository contains the following files:
       
    3. analyze_dc - An R script which:
         a) explores and analyzes the data, determines which predictors to use in explaining energy demand, 
-        b) settles on a 3rd degree polynomial model, based on analysis of variances and the one standard error rule applied to cross    
-           validation error (estimated prediction error),
+        b) settles on a 3rd degree polynomial model, based on analysis of variances and the one standard error rule applied to cross validation error (estimated prediction error),
         c) plots the model against the data points and generates residual plots. 
