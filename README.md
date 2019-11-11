@@ -13,3 +13,8 @@ This repository contains the following files:
         a) explores and analyzes the data, determines which predictors to use in explaining energy demand, 
         b) settles on a 3rd degree polynomial model, based on analysis of variances and the one standard error rule applied to cross validation error (estimated prediction error),
         c) plots the model against the data points and generates residual plots. 
+
+
+TO FIX IN FUTURE VERSIONS:
+   1. While searching for data on energy demand, I was unable to find hourly by-county data. As a consequence, the data I analyze thus far is monthly. This lead to a small sample size (months from 2001 to 2019), an unfortunate result; and forced me to aggregate daily weather data into monthly averages to enable joining. In an upcoming update of this project, I will obtain hourly data by looking not at counties but at local electrical utilities, whose operations may straddle county boundaries. 
+   2. I used cross validation to assess my model's performance and decide on some key parameters. But I am aware of the problems with using cross validation on time series data. I will study the documentation on cross validation and find out how these problems are addressed, and will implement cross validation more carefully in the next update.
