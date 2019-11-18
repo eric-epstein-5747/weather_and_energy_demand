@@ -13,9 +13,13 @@ This repository contains the following files:
         a) explores and analyzes the data, determines which predictors to use in explaining energy demand, 
         b) settles on a 3rd degree polynomial model, based on analysis of variances and the one standard error rule applied to cross validation error (estimated prediction error),
         c) plots the model against the data points and generates residual plots. 
-      BUG: Implements cross validation naively on time series data. See item 4 for improved implementation.
+        d) BUGS: 
+            i) Implements cross validation naively on time series data. See item 4 for improved implementation.
+            ii) Calculates standard error of estimated prediction error by repeatedly implementing cross validation in 100 trials, instead of implementing cv once and calculating standard deviation of distribution of estimated errors for models fit on the different cross validation folds. Repeating cross validation on 18 folds 100 times for each polynomial degree leads to performance issues.
 
-   4. careful_cross_validation - An R script which implements the one standard error rule using a form of cross validation more appropriate for time series data (cv was used naively in analyze_dc). This analysis settles on a quadratic model; so we've justified a simpler model using a more appropriate technique. 
+   4. careful_cross_validation - An R script which fixes the bugs in part 3:
+        a) Implements the one standard error rule using a form of cross validation more appropriate for time series data (cv was used naively in analyze_dc). This analysis settles on a quadratic model; so we've justified a simpler model using a more appropriate technique. 
+        b) Calculates standard error of estimated prediction error correctly, performing cross validation only once. 
 
 
 TO FIX IN FUTURE VERSIONS:
