@@ -20,6 +20,7 @@ This repository contains the following files:
    4. careful_cross_validation - An R script which fixes the bugs in part 3:
         (a) Implements the one standard error rule using a form of cross validation more appropriate for time series data (cv was used naively in analyze_dc). This analysis settles on a quadratic model; so we've justified a simpler model using a more appropriate technique. 
         (b) Calculates standard error of estimated prediction error correctly, performing cross validation only once. 
+        (c) As in analyze_dc, plots the model against the data points to see if it looks intuitively like a good fit, and generates a residuals plot.
 
 
 TO FIX IN FUTURE VERSIONS:
