@@ -10,17 +10,13 @@ This repository contains the following files:
       download the generating data themselves and then run create_tables_dc. 
       
    3. analyze_dc - An R script which:
-        (a) explores and analyzes the data, determines which predictors to use in explaining energy demand, 
-        (b) settles on a 3rd degree polynomial model, based on analysis of variances and the one standard error rule applied to cross validation error (estimated prediction error),
+        (a) explores and analyzes the data, 
+        (b) determines which predictors to use in explaining energy demand, 
+        (b) settles on a quadratic model, based on analysis of F-tests and the one standard error rule applied to test RMSE (estimated by cross validation),
         (c) plots the model against the data points and generates residual plots. 
-        (d) BUGS: 
-            (i) Implements cross validation naively on time series data. See item 4 for improved implementation.
-            (ii) Calculates standard error of estimated prediction error by repeatedly implementing cross validation in 100 trials, instead of implementing cv once and calculating standard deviation of distribution of estimated errors for models fit on the different cross validation folds. Repeating cross validation on 18 folds 100 times for each polynomial degree leads to performance issues.
-
-   4. careful_cross_validation - An R script which fixes the bugs in part 3:
-        (a) Implements the one standard error rule using a form of cross validation more appropriate for time series data (cv was used naively in analyze_dc). This analysis settles on a quadratic model; so we've justified a simpler model using a more appropriate technique. 
-        (b) Calculates standard error of estimated prediction error correctly, performing cross validation only once. 
-        (c) As in analyze_dc, plots the model against the data points to see if it looks intuitively like a good fit, and generates a residuals plot.
+        (d) FIXED BUGS SINCE PREVIOUS VERSION: 
+            (i) Implements a form of cross validation more appropriate for time series data than before.
+            (ii) Calculates standard error of estimated test RMSE correctly, performing cross validation only once, calculating standard deviation of distribution of estimated errors for models fit on the different cross validation folds. (Rather than repeatedly implementing cross validation in 100 trials, which was unnecessary and led to performance issues.)
 
 
 TO FIX IN FUTURE VERSIONS:
