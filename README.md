@@ -10,14 +10,19 @@ This repository contains the following files:
       download the generating data themselves and then run create_tables_dc. 
       
    3. analyze_dc - An R script which:
-        (a) explores and analyzes the data, 
-        (b) determines which predictors to use in explaining energy demand, 
-        (b) settles on a quadratic model, based on analysis of F-tests and the one standard error rule applied to test RMSE (estimated by cross validation),
+        (a) performs exploratory data analysis;
+        (b) determines which predictors to use in explaining energy demand;
+        (c) finds that these predictors are highly correlated, so performs principal components analysis for dimensionality reduction;
+        (d) generates scree plot to identify first principal component (pc1) as the variable to examine;
+        (e) observes a polynomial relationship between pc1 and energy demand;
+        (b) uses the one-standard-error-rule applied to test RMSE (estimated by cross validation) to determine the appropriate degree for the polynomial, settling on a quadratic model;
         (c) plots the model against the data points and generates residual plots. 
-        (d) FIXED BUGS SINCE PREVIOUS VERSION: 
+        (d) FIXED BUGS SINCE PREVIOUS VERSIONs: 
             (i) Implements a form of cross validation more appropriate for time series data than before.
             (ii) Calculates standard error of estimated test RMSE correctly, performing cross validation only once, calculating standard deviation of distribution of estimated errors for models fit on the different cross validation folds. (Rather than repeatedly implementing cross validation in 100 trials, which was unnecessary and led to performance issues.)
+            (iii) Performs PCA for dimensionality reduction, rather than simply dropping the predictor that's less strongly associated with the response variable. 
 
 
 TO FIX IN FUTURE VERSIONS:
    1. While searching for data on energy demand, I was unable to find hourly by-county data. As a consequence, the data I analyze thus far is monthly. This lead to a small sample size (months from 2001 to 2019), an unfortunate result; and forced me to aggregate daily weather data into monthly averages so I could join it with the energy demand data. In an upcoming update of this project, I will obtain hourly data by looking not at counties but at local electrical utilities (whose operations may straddle county boundaries).
+   2. Clearly, energy demand varies across time as well as temperature, on daily, weekly, and monthly scales. A future iteration of this project will include time as a predictor, likely subject to some sinusoidal transformations.
