@@ -12,7 +12,7 @@ This repository contains the following files:
    3. analyze_dc - An R script which:
         (a) performs exploratory data analysis;
         (b) determines which predictors to use in explaining energy demand;
-        (c) finds that these predictors are highly correlated, so performs principal components analysis for dimensionality reduction;
+        (c) finds that these predictors are highly correlated, so performs principal components regression for dimensionality reduction;
         (d) generates scree plot to identify first principal component (pc1) as the variable to examine;
         (e) observes a polynomial relationship between pc1 and energy demand;
         (b) uses the one-standard-error-rule applied to test RMSE (estimated by cross validation) to determine the appropriate degree for the polynomial, settling on a quadratic model;
